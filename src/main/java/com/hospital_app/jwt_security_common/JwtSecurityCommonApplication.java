@@ -1,4 +1,4 @@
-package com.jwt_security_common.jwt_security_common;
+package com.hospital_app.jwt_security_common;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
