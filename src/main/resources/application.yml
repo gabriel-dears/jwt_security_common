@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: jwt_security_common
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:public.key
