@@ -14,6 +14,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.Instant;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class JwtUtils {
@@ -25,7 +26,7 @@ public class JwtUtils {
         JWTClaimsSet claims = new JWTClaimsSet.Builder()
                 .subject(username)
                 .issueTime(Date.from(Instant.now()))
-                .expirationTime(Date.from(Instant.now().plusSeconds(900))) // 15 minutes
+                .expirationTime(Date.from(Instant.now().plusSeconds(TimeUnit.HOURS.toSeconds(1))))
                 .claim("role", role)
                 .build();
 
