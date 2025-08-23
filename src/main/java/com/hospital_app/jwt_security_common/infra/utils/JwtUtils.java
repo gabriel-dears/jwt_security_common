@@ -14,7 +14,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.Instant;
 import java.util.Date;
-import java.util.List;
 
 @Service
 public class JwtUtils {
@@ -22,12 +21,12 @@ public class JwtUtils {
     @Value("classpath:private.key")
     private Resource privateKeyResource;
 
-    public String generateToken(String username, List<String> roles) throws JOSEException, NoSuchAlgorithmException, InvalidKeySpecException, IOException {
+    public String generateToken(String username, String role) throws JOSEException, NoSuchAlgorithmException, InvalidKeySpecException, IOException {
         JWTClaimsSet claims = new JWTClaimsSet.Builder()
                 .subject(username)
                 .issueTime(Date.from(Instant.now()))
                 .expirationTime(Date.from(Instant.now().plusSeconds(900))) // 15 minutes
-                .claim("roles", roles)
+                .claim("role", role)
                 .build();
 
         JWSHeader header = new JWSHeader.Builder(JWSAlgorithm.RS256).type(JOSEObjectType.JWT).build();

@@ -15,7 +15,6 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 
 import java.security.interfaces.RSAPublicKey;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Configuration
@@ -31,11 +30,8 @@ public class CommonJwtSecurityConfig {
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
         converter.setJwtGrantedAuthoritiesConverter(jwt -> {
-            List<String> roles = jwt.getClaimAsStringList("roles");
-            if (roles == null) roles = List.of();
-            return roles.stream()
-                    .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
-                    .collect(Collectors.toList());
+            String role = jwt.getClaimAsString("role");
+            return List.of(new SimpleGrantedAuthority("ROLE_" + role));
         });
         return converter;
     }

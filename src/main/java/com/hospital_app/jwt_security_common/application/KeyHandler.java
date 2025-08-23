@@ -30,8 +30,11 @@ public class KeyHandler {
         String keyContent = new String(key.getInputStream().readAllBytes())
                 .replace("-----BEGIN PUBLIC KEY-----", "")
                 .replace("-----END PUBLIC KEY-----", "")
-                .replaceAll("\\s", "");
+                .replace("-----BEGIN PRIVATE KEY-----", "")
+                .replace("-----END PRIVATE KEY-----", "")
+                .replaceAll("\\s+", "");
         return Base64.getDecoder().decode(keyContent);
     }
+
 
 }
