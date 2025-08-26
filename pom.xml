@@ -8,14 +8,13 @@
     <description>jwt_security_common</description>
     <packaging>jar</packaging>
     <groupId>com.hospital_app</groupId>
-    <parent>
-        <groupId>com.hospital</groupId>
-        <artifactId>hospital-app</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-
     <url/>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.5</version>
+        <relativePath/>
+    </parent>
     <licenses>
         <license/>
     </licenses>
@@ -52,15 +51,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>io.spring.gradle</groupId>
-                <artifactId>dependency-management-plugin</artifactId>
-                <version>1.1.5</version>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
